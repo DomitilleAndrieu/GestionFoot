@@ -30,17 +30,14 @@ public class EquipesFacade extends AbstractFacade<Equipes> implements EquipesFac
     }
 
     @Override
-    public void creerEquipe(int idequipe, String nomequipe) {
+    public void creerEquipe(long idequipe, String nomequipe) {
         Equipes e = new Equipes();
-        e.setIdequipe(idequipe);
+        e.setId(idequipe);
         e.setNomequipe(nomequipe);
         em.persist(e);
-        
     }
-    
-    
-    
-    
+
+
     
     
 }
