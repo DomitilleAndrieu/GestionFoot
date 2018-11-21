@@ -9,6 +9,7 @@ import entites.Equipes;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -35,6 +36,15 @@ public class EquipesFacade extends AbstractFacade<Equipes> implements EquipesFac
         e.setId(idequipe);
         e.setNomequipe(nomequipe);
         em.persist(e);
+    }
+
+    @Override
+    public Equipes rechercherEquipe(String nomequipe) {
+        String req = "SELECT e from Equipe as e where e.nom=:n";
+        Query requete = em.createQuery(req);
+        requete.setParameter("n", nomequipe);
+        Equipes e = (Equipes) requete.getSingleResult();
+        return e;
     }
 
 
